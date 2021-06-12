@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+</head>
+
+<body>
+    <button id="btn">提交</button>
+    <script>
+        // $('#btn').click(function () {
+        //     $.ajax({
+        //         method: 'get',
+        //         url: '/login',
+        //         cache: false,
+        //         data: {
+        //             user: 'laoli',
+        //             pass: 123
+        //         },
+        //         dataType: 'json',
+        //         headers: {
+        //             'Cache-Contron': 'max-age=0'
+        //         },
+        //         success(data) {
+        //             console.log(data);
+        //         }
+
+        //     })
+        // })
+
+
+
+            $.get('/login',{
+                user:'laoli',
+                pass:"123"
+
+            },(data)=>{
+                console.log(data);
+            })
+
+            $.post('/login',{
+                user:'laoli',
+                pass:'123'
+            },(data)=>{
+                console.log(data);
+            })
+
+
+            // jQuery的三级封装
+            // $.getJSON();
+
+            $.getJSON('/login',{
+                user:'laoli',
+                pass:'123'
+            })
+
+
+
+            // post请求
+            axious.post('/login',{
+                user:'laoli',
+                pass:'123'
+            }).then(mes=>{
+                console.log(mes.data);
+            }).catch(err=>{
+                console.log(err);
+            })
+
+    </script>
+</body>
+
+</html>

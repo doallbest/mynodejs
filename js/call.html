@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            1.判断context
+            2.给context扩展一个方法ff
+            3.调用context.ff
+            4.删除ff方法
+            5.获取实参 在调用ff的时候 传入
+            6.把ff这个名字换了
+        
+        
+        */
+        /* 
+            手写call:
+                - call是每一个函数都有的
+                - call可以改变函数的this指向
+                - call可以调用函数
+                - 函数执行的时候 call可以给函数传参
+        
+        */
+
+        Function.prototype.myCall = function (context) {
+            if (context === null || context === undefined) {
+                context = window;
+            }
+
+            if (typeof context != "object" && typeof context != "function") {
+                context = Object(context);
+            }
+
+            var arg =Array.from(arguments).slice(1);
+
+
+        }
+
+
+
+
+
+
+        function fn(a, b) {
+            console.log(a, b);
+            console.log(this, a + b);
+        }
+
+        fn.myCall(1, 1, 2);
+        fn.myCall("abc", 1, 2);
+        fn.myCall(true, 1, 2);
+        fn.myCall([1, 2], 1, 2);
+        fn.myCall({
+            name: "laowang"
+        }, 1, 2);
+    </script>
+</body>
+
+</html>
